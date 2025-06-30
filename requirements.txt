@@ -1,0 +1,28 @@
+# LangChain and its ecosystem
+langchain==0.3.7
+langchain_community==0.3.5
+langchain-core
+langchain-huggingface
+langchain-groq
+
+# PDF parsing
+pymupdf
+
+# LLM & Transformers support
+huggingface-hub
+transformers
+tiktoken
+
+# Embeddings & NLP tools
+sentence-transformers
+InstructorEmbedding
+
+# Utility libraries
+faiss-cpu
+python-dotenv
+numpy
+scikit-learn
+grandalf
+
+# Web framework
+flask

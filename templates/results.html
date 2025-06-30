@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume Analysis Results</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="mb-4">Resume Analysis Results</h2>
+    <a href="/" class="btn btn-secondary mb-3">← Analyze More</a>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-hover table-bordered align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Match Score (%)</th>
+            <th>Status</th>
+            <th>Education</th>
+            <th>Experience</th>
+            <th>Contact Info</th>
+            <th>Skills</th>
+            <th>Resume Summary</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for result in results %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ result.name }}</td>
+            <td><strong>{{ result.match_score }}</strong></td>
+            <td>{{ result.label }}</td>
+
+            <!-- Education -->
+            <td>
+              {% for edu in result.education %}
+                <div class="mb-2">{{ edu.degree }} – {{ edu.university_name }} (GPA: {{ edu.gpa }})</div>
+              {% endfor %}
+            </td>
+
+            <!-- Experience -->
+            {# <td>
+              {% for exp in result.experience %}
+                <div class="mb-3">
+                  <strong>Company:</strong> {{ exp.company_name }}<br>
+                  <strong>Duration:</strong> {{ exp.n_years }}<br>
+                  <strong>Project:</strong> {{ exp.project_name }}<br>
+                  <strong>Description:</strong> {{ exp.project_description }}<br>
+                  <strong>Tech Stack:</strong> {{ exp.tech_stack | join(', ') }}
+                </div>
+              {% endfor %}
+            </td>
+            #}
+            <td>{{ result.total_experience }}</td>
+
+            <!-- Contact Info -->
+            <td>
+              <div><strong>Email:</strong> {{ result.contact_info.email }}</div>
+              <div><strong>Phone:</strong> {{ result.contact_info.phone }}</div>
+              <div><strong>LinkedIn:</strong>
+                {% if result.contact_info.linkedin != 'Not Found' %}
+                  <a href="{{ result.contact_info.linkedin }}" target="_blank">Profile</a>
+                {% else %}
+                  Not Found
+                {% endif %}
+              </div>
+            </td>
+
+            <!-- Skills -->
+            <td>
+              {% for skill in result.skills %}
+                <span class="badge bg-primary mb-1">{{ skill }}</span>
+              {% endfor %}
+            </td>
+
+            <!-- Summary -->
+            <td>{{ result.summary }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
