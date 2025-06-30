@@ -38,5 +38,8 @@ To run this project locally:
     python app.py
     ```
 
-    
-https://github.com/user-attachments/assets/0b9c58dc-d117-4bb2-a03c-dff029167d50
+   # Demo
+   
+
+https://github.com/user-attachments/assets/b7f630a9-bf24-4003-979f-c38059619809
+
